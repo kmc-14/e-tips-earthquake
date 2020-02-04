@@ -1,0 +1,7 @@
+{
+  "name": "e-tips-earthquake",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
