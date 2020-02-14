@@ -1,0 +1,8 @@
+/* universal */
+ion-content.ios.content {
+    height: calc(100vh - 44px);
+}
+
+ion-content.md.content {
+    height: calc(100vh - 56px);
+}

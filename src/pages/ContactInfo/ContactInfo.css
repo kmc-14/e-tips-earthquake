@@ -1,0 +1,11 @@
+.contact-avatar.ios {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+}
+
+.contact-avatar.md {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}

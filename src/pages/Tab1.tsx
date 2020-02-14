@@ -13,9 +13,11 @@ import {
   IonListHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonButtons,
+  IonButton
 } from '@ionic/react';
-import { book, build, colorFill, grid } from 'ionicons/icons';
+import { book, build, colorFill, grid, menu } from 'ionicons/icons';
 import React from 'react';
 import './Tab1.css';
 
@@ -24,6 +26,12 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
+          <IonButtons slot="secondary">
+            <IonButton>
+              <IonIcon slot="start" color="medium" icon={menu} />
+            </IonButton>
+          </IonButtons>
+
           <IonTitle>Tab One</IonTitle>
         </IonToolbar>
       </IonHeader>
