@@ -1,0 +1,27 @@
+.contanct-info {
+    // .contact-avatar.ios {
+    //     position: absolute;
+    //     top: 22px;
+    //     right: 22px;
+    // }
+
+    // .contact-avatar.md {
+    //     position: absolute;
+    //     top: 16px;
+    //     right: 16px;
+    // }
+
+    .contact-avatar {
+        position: absolute;
+
+        &.ios {
+            top: 22px;
+            right: 22px;
+        }
+
+        &.md {
+            top: 16px;
+            right: 16px;
+        }
+    }
+}

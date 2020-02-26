@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
+import { IonApp } from '@ionic/react';
 import Home from './pages/Home/Home';
-import ContactInfo from './pages/ContactInfo/ContactInfo';
+import InfoCardContent from './pages/GetInformed/InfoCardContent/InfoCardContent';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,19 +22,24 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './App.scss';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 class App extends Component {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     return (
       <IonApp className="app">
         <Router>
-          <Home />
+          <Route exact path="/">
+            <Redirect to="/home/0" />
+          </Route>
+
+          <Route exact path="/home/*/*">
+            <Redirect to="/home/0" />
+          </Route>
+
+          <Route exact path="/home/:contentIndex" component={Home} />
+          <Route exact path="/info-card/:id" component={InfoCardContent} />
         </Router>
       </IonApp>
     )

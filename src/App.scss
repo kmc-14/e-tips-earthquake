@@ -1,0 +1,94 @@
+/* universal */
+ion-content {
+    &.ios.content {
+        height: calc(100vh - 44px);
+    }
+
+    &.md.content {
+        height: calc(100vh - 56px);
+    }
+}
+
+.list-header {
+    font-size: 30px;
+
+    .ios & {
+        padding: 20px 16px;
+    }
+
+    .md & {
+        padding: 20px 16px;
+    }
+}
+
+/* text */
+.medium-font {
+    font-size: 20px;
+}
+
+.x-large-font {
+    font-size: 30px;
+}
+
+.xx-large-font {
+    font-size: 50px;
+}
+
+/* background */
+.neutral {
+    background-color: #76c8ff;
+    color: #ffffff;
+}
+
+.danger {
+    background-color: #ff8c98;
+    color: #ffffff;
+}
+
+.success {
+    background-color: #b0ff9c;
+    color: #ffffff;
+}
+
+.warning {
+    background-color: #ffea76;
+    color: #000000;
+}
+
+/* color */
+.neutral-color {
+    color: #76c8ff;
+}
+
+.danger-color {
+    color: #ff8c98;
+}
+
+.success-color {
+    color: #b0ff9c;
+}
+
+.warning-color {
+    color: #ffea76;
+}
+
+/*  */
+.opaque-7 {
+    opacity: 0.7;
+}
+
+.opaque-0 {
+    opacity: 0;
+}
+
+.opaque {
+    opacity: 1;
+}
+
+/* padding & margin */
+.padding-20 {
+    padding: 20px;
+}
+.margin-20-0 {
+    margin: 20px 0;
+}

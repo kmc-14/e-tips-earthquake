@@ -13,29 +13,26 @@ import {
     IonMenuButton,
     IonMenuToggle
 } from '@ionic/react';
-import Statics from "../../common/Statics";
-import './Home.css'
+import Statics from '../../common/Statics';
+import './Home.scss'
+import { RouteProps } from 'react-router';
 
+interface IRouteProps extends RouteProps {
+    match: any
+}
 
 interface MyState { selectedContentIndex: number };
 
-class Home extends Component<{}, MyState> {
+class Home extends Component<IRouteProps, MyState> {
     constructor(props: any) {
         super(props);
 
+        const contentIndex = this.props.match.params.contentIndex;
+
+        console.log("contentIndex", this.props)
         this.state = {
-            selectedContentIndex: 0
+            selectedContentIndex: contentIndex
         }
-
-        console.log(props);
-    }
-
-    handleMenuClick = (index: number) => {
-        console.log(index);
-
-        this.setState({
-            selectedContentIndex: index
-        });
     }
 
     getContent = () => {
@@ -59,7 +56,7 @@ class Home extends Component<{}, MyState> {
                         <IonList>
                             {Statics.home.menuItems.map((item, index) => (
                                 <IonMenuToggle key={index} >
-                                    <IonItem onClick={() => this.handleMenuClick(index)}>
+                                    <IonItem routerLink={`/home/${index}`}>
                                         <IonIcon icon={item.icon}></IonIcon>
                                         <IonLabel className="ion-padding">{item.label}</IonLabel>
                                     </IonItem>
