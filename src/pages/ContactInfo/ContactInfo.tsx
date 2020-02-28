@@ -3,10 +3,6 @@ import {
     IonContent,
     IonLabel,
     IonIcon,
-    IonTabs,
-    IonTabBar,
-    IonTabButton,
-    IonRouterOutlet,
     IonCard,
     IonCardHeader,
     IonCardSubtitle,
@@ -14,19 +10,24 @@ import {
     IonAvatar,
     IonCardContent,
     IonList,
-    IonItem
+    IonItem,
+    IonToolbar,
+    IonSegment,
+    IonSegmentButton
 } from '@ionic/react';
 import './ContactInfo.scss';
-import { call, mail, medical } from 'ionicons/icons';
+import { call, mail } from 'ionicons/icons';
 import avatar from '../../assets/avatar/avatar 1.png';
-import { capitalize } from '../../common/helpers/textHelper';
-import { Redirect, Route } from 'react-router-dom';
 
-import { IonReactRouter } from '@ionic/react-router';
-
-interface MyState { contacts: any };
+interface MyState {
+    contacts: any,
+    selectedSegment: any
+};
 
 class ContactInfo extends Component<{}, MyState> {
+    CONTACT_TYPES: any = ["relatives", "agencies", "hospitals"];
+    IonContentElementRef: HTMLIonContentElement | any;
+
     constructor(props: any) {
         super(props);
 
@@ -70,7 +71,7 @@ class ContactInfo extends Component<{}, MyState> {
                         type: "relative"
                     }
                 ],
-                government: [
+                agencies: [
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
@@ -102,7 +103,8 @@ class ContactInfo extends Component<{}, MyState> {
                         type: "hospital"
                     }
                 ]
-            }
+            },
+            selectedSegment: this.CONTACT_TYPES[0]
         };
     }
 
@@ -110,35 +112,46 @@ class ContactInfo extends Component<{}, MyState> {
         return Object.keys(this.state.contacts);
     }
 
+    handleSegmentSelect = (event: any) => {
+        let selectedSegment = event.detail.value;
+
+        this.setState({
+            selectedSegment: selectedSegment
+        });
+    }
+
+    getSegmentContent = () => {
+        this.scrollIonContentToTop();
+
+        return (<ContactInfoTab contacts={this.state.contacts} type={this.state.selectedSegment} />);
+    }
+
+    scrollIonContentToTop = () => {
+        this.IonContentElementRef = document.querySelector("#contanct-info-ion-content");
+
+        if (this.IonContentElementRef) {
+            this.IonContentElementRef.scrollToTop();
+        }
+    }
+
     render() {
+        const { selectedSegment } = this.state;
         return (
             <div className="contanct-info">
-                <IonContent scrollEvents={true} className="content">
-                    <IonReactRouter>
-                        <IonTabs>
-                            <IonRouterOutlet>
-                                <IonContent>
-                                    {
-                                        this.getContactTypes().map((type, key) => (
-                                            <Route key={key} exact path={`/home/0/tab/${type}`}
-                                                component={() => <ContactInfoTab contacts={this.state.contacts} type={type} />}
-                                            />
-                                        ))
-                                    }
-                                    <Route exact path="/home/0" component={() => <Redirect to={`/home/0/tab/${this.getContactTypes()[0]}`} />} />
-                                </IonContent>
-                            </IonRouterOutlet>
-                            <IonTabBar slot="bottom">
-                                {
-                                    this.getContactTypes().map((type, key) => (
-                                        <IonTabButton key={key} tab={`tab${key}`} href={`/home/0/tab/${type}`}>
-                                            <IonLabel>{capitalize(type, "all")}</IonLabel>
-                                        </IonTabButton>
-                                    ))
-                                }
-                            </IonTabBar>
-                        </IonTabs>
-                    </IonReactRouter>
+                <IonToolbar>
+                    <IonSegment onIonChange={event => { this.handleSegmentSelect(event) }}>
+                        {
+                            this.getContactTypes().map((type, key) => (
+                                <IonSegmentButton key={key} value={type} checked={selectedSegment === type}>
+                                    <IonLabel>{type}</IonLabel>
+                                </IonSegmentButton>
+                            ))
+                        }
+                    </IonSegment>
+                </IonToolbar>
+
+                <IonContent id="contanct-info-ion-content" scrollEvents={true} className="content">
+                    {this.getSegmentContent()}
                 </IonContent>
             </div>
         )

@@ -29,7 +29,6 @@ class Home extends Component<IRouteProps, MyState> {
 
         const contentIndex = this.props.match.params.contentIndex;
 
-        console.log("contentIndex", this.props)
         this.state = {
             selectedContentIndex: contentIndex
         }

@@ -1,4 +1,14 @@
 .get-informed {
+    ion-content {
+        &.ios.content {
+            height: calc(100vh - 76px);
+        }
+
+        &.md.content {
+            height: calc(100vh - 112px);
+        }
+    }
+
     .info-card-img {
         height: 220px;
         overflow: hidden;
