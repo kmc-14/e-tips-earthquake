@@ -20,7 +20,7 @@ import './ContactInfo.scss';
 import { call, mail, medical } from 'ionicons/icons';
 import avatar from '../../assets/avatar/avatar 1.png';
 import { capitalize } from '../../common/helpers/textHelper';
-import { Redirect, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -91,20 +91,6 @@ class ContactInfo extends Component<{}, MyState> {
                         numbers: ["+63 9156705473"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "government"
-                    },
-                    {
-                        firstName: "Juan",
-                        lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
-                        emails: ["juan.dela.cruz@gmail.com"],
-                        type: "government"
-                    },
-                    {
-                        firstName: "Juan",
-                        lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
-                        emails: ["juan.dela.cruz@gmail.com"],
-                        type: "government"
                     }
                 ],
                 hospitals: [
@@ -117,8 +103,6 @@ class ContactInfo extends Component<{}, MyState> {
                     }
                 ]
             }
-
-
         };
     }
 
@@ -172,7 +156,7 @@ const ContactInfoTab = (props: any) => {
                 <IonCardSubtitle>{contact.lastName}</IonCardSubtitle>
                 <IonCardTitle>{contact.firstName}</IonCardTitle>
                 <IonAvatar className="contact-avatar">
-                    <img src={avatar} />
+                    <img src={avatar} alt="" />
                 </IonAvatar>
             </IonCardHeader>
 
