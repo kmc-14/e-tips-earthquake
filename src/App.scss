@@ -1,4 +1,4 @@
-/* universal */
+// universal
 ion-content {
     &.ios.content {
         height: calc(100vh - 44px);
@@ -6,6 +6,12 @@ ion-content {
 
     &.md.content {
         height: calc(100vh - 56px);
+    }
+}
+
+ion-textarea {
+    textarea {
+        min-height: 100px !important;
     }
 }
 
@@ -21,7 +27,7 @@ ion-content {
     }
 }
 
-/* text */
+// text
 .medium-font {
     font-size: 20px;
 }
@@ -34,7 +40,7 @@ ion-content {
     font-size: 50px;
 }
 
-/* background */
+// background
 .neutral {
     background-color: #76c8ff;
     color: #ffffff;
@@ -55,7 +61,7 @@ ion-content {
     color: #000000;
 }
 
-/* color */
+// color
 .neutral-color {
     color: #76c8ff;
 }
@@ -72,7 +78,7 @@ ion-content {
     color: #ffea76;
 }
 
-/*  */
+// opacity
 .opaque-7 {
     opacity: 0.7;
 }
@@ -85,10 +91,18 @@ ion-content {
     opacity: 1;
 }
 
-/* padding & margin */
+// padding & margin
 .padding-20 {
     padding: 20px;
 }
+.margin-20 {
+    margin: 20px;
+}
 .margin-20-0 {
     margin: 20px 0;
+}
+
+// width
+.half-width {
+    width: 50%;
 }

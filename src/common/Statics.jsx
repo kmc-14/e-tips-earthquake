@@ -1,13 +1,16 @@
 import React from 'react';
 import { call, notifications, help, medkit, people, home, paper, alert, hand, business } from 'ionicons/icons';
+import { IonIcon, IonGrid, IonRow, IonCol } from '@ionic/react';
+
 import ContactInfo from '../pages/ContactInfo/ContactInfo';
 import GetInformed from '../pages/GetInformed/GetInformed';
+import AskQuestion from '../pages/AskQuestion/AskQuestion';
+
 import planning from '../assets/header-pics/planning.png';
 import warning from '../assets/header-pics/warning.png';
 import earthquake from '../assets/header-pics/earthquake.png';
 import earthquakeDrill from '../assets/header-pics/earthquake-drill.png';
 import duckCover from '../assets/icon-pics/duck-cover.png';
-import { IonIcon, IonGrid, IonRow, IonCol } from '@ionic/react';
 
 const Statics = {
     home: {
@@ -16,27 +19,32 @@ const Statics = {
             {
                 icon: call,
                 label: "Contact Info",
-                component: <ContactInfo />
+                component: <ContactInfo />,
+                hasOwnHeader: false
             },
             {
                 icon: notifications,
                 label: "Get Informed",
-                component: <GetInformed />
+                component: <GetInformed />,
+                hasOwnHeader: false
             },
             {
                 icon: help,
                 label: "Ask a Question",
-                component: <div>ask question</div>
+                component: <AskQuestion />,
+                hasOwnHeader: false
             },
             {
                 icon: medkit,
                 label: "First Aid",
-                component: <div>first aid</div>
+                component: <div>first aid</div>,
+                hasOwnHeader: false
             },
             {
                 icon: people,
                 label: "About Us",
-                component: <div>About us</div>
+                component: <div>About us</div>,
+                hasOwnHeader: false
             }
         ]
     },
@@ -202,6 +210,9 @@ const Statics = {
                 schedule: "23 May 2020 | 10:00 am"
             }
         ]
+    },
+    askQuestion: {
+        userId: "user_13cdCjPf4oIqwHMA6Utul"
     }
 }
 

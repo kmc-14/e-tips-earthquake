@@ -42,6 +42,10 @@ class Home extends Component<IRouteProps, MyState> {
         return Statics.home.menuItems[this.state.selectedContentIndex].label;
     }
 
+    hasOwnHeader = () => {
+        return Statics.home.menuItems[this.state.selectedContentIndex].hasOwnHeader;
+    }
+
     render() {
         return (
             <div>
@@ -65,14 +69,17 @@ class Home extends Component<IRouteProps, MyState> {
                     </IonContent>
                 </IonMenu>
 
-                <IonHeader>
-                    <IonToolbar>
-                        <IonButtons slot="start">
-                            <IonMenuButton menu={Statics.home.menuId}></IonMenuButton>
-                        </IonButtons>
-                        <IonTitle>{this.getTitle()}</IonTitle>
-                    </IonToolbar>
-                </IonHeader>
+                {
+                    !this.hasOwnHeader() ?
+                        <IonHeader>
+                            <IonToolbar>
+                                <IonButtons slot="start">
+                                    <IonMenuButton menu={Statics.home.menuId}></IonMenuButton>
+                                </IonButtons>
+                                <IonTitle>{this.getTitle()}</IonTitle>
+                            </IonToolbar>
+                        </IonHeader> : null
+                }
 
                 <div>
                     {this.getContent()}
