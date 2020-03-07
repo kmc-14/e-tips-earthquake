@@ -48,18 +48,18 @@ class Home extends Component<IRouteProps, MyState> {
 
     render() {
         return (
-            <div>
+            <div className="home">
                 <IonMenu menuId={Statics.home.menuId} contentId="content" type="overlay">
-                    <IonHeader>
-                        <IonToolbar color="tertiary">
-                            <IonTitle>Menu</IonTitle>
-                        </IonToolbar>
-                    </IonHeader>
                     <IonContent id="content">
                         <IonList>
                             {Statics.home.menuItems.map((item, index) => (
                                 <IonMenuToggle key={index} >
-                                    <IonItem routerLink={`/home/${index}`}>
+                                    <IonItem routerLink={`/home/${index}`}
+                                        className={`${index == this.state.selectedContentIndex ? "selected" : ""}`}
+                                        style={{
+                                            "--background": index == this.state.selectedContentIndex ? "rgba(230, 230, 230, 0.5)" : ""
+                                        }}
+                                    >
                                         <IonIcon icon={item.icon}></IonIcon>
                                         <IonLabel className="ion-padding">{item.label}</IonLabel>
                                     </IonItem>
