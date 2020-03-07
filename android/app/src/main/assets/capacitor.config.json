@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "e-tips-earthquake",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "build",
+  "cordova": {}
+}

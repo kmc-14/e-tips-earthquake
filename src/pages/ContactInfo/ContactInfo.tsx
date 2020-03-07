@@ -150,7 +150,7 @@ class ContactInfo extends Component<{}, MyState> {
                     </IonSegment>
                 </IonToolbar>
 
-                <IonContent id="contanct-info-ion-content" scrollEvents={true} className="content">
+                <IonContent id="contanct-info-ion-content" scrollEvents={true} className="content with-segment">
                     {this.getSegmentContent()}
                 </IonContent>
             </div>

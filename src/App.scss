@@ -1,17 +1,35 @@
 // universal
 ion-content {
+    height: 100vh;
+
     &.ios.content {
         height: calc(100vh - 44px);
+
+        &.with-segment {
+            height: calc(100vh - 76px);
+        }
     }
 
     &.md.content {
         height: calc(100vh - 56px);
+
+        &.with-segment {
+            height: calc(100vh - 112px);
+        }
     }
 }
 
 ion-textarea {
     textarea {
         min-height: 100px !important;
+    }
+}
+
+ion-icon {
+    &.encircle {
+        border: 3px solid black;
+        border-radius: 100%;
+        padding: 15px;
     }
 }
 
@@ -38,6 +56,18 @@ ion-textarea {
 
 .xx-large-font {
     font-size: 50px;
+}
+
+.line-height-2 {
+    line-height: 2;
+}
+
+.justified {
+    text-align: justify;
+}
+
+.centered {
+    text-align: center;
 }
 
 // background

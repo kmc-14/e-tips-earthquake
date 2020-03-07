@@ -5,6 +5,7 @@ import { IonIcon, IonGrid, IonRow, IonCol } from '@ionic/react';
 import ContactInfo from '../pages/ContactInfo/ContactInfo';
 import GetInformed from '../pages/GetInformed/GetInformed';
 import AskQuestion from '../pages/AskQuestion/AskQuestion';
+import AboutUs from '../pages/AboutUs/AboutUs';
 
 import planning from '../assets/header-pics/planning.png';
 import warning from '../assets/header-pics/warning.png';
@@ -43,7 +44,7 @@ const Statics = {
             {
                 icon: people,
                 label: "About Us",
-                component: <div>About us</div>,
+                component: <AboutUs />,
                 hasOwnHeader: false
             }
         ]

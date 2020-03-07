@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { RouteProps } from 'react-router';
 import {
-    IonToolbar, IonButtons, IonBackButton, IonHeader, IonContent
+    IonToolbar, IonButtons, IonBackButton, IonHeader, IonContent, IonFab, IonFabButton, IonIcon
 } from '@ionic/react';
 import Statics from '../../../common/Statics';
 import './InfoCardContent.scss';
+import { backspace, arrowBack } from 'ionicons/icons';
 
 interface MyState {
     content: any
@@ -36,20 +37,16 @@ class InfoCardContent extends Component<IRouteProps, MyState> {
 
         return (
             <div>
-
-                <IonHeader>
-                    <IonToolbar>
-                        <IonButtons slot="start">
-                            <IonBackButton defaultHref="/home/1" />
-                        </IonButtons>
-                    </IonToolbar>
-                </IonHeader>
-                <IonContent scrollEvents={true} className="content">
+                <IonFab vertical="top" horizontal="start" slot="fixed">
+                    <IonFabButton color="light" routerLink="/home/1">
+                        <IonIcon icon={arrowBack} />
+                    </IonFabButton>
+                </IonFab>
+                <IonContent scrollEvents={true}>
                     <div className="info-card-content-body">
                         {content}
                     </div>
                 </IonContent>
-
             </div>
         )
     }
