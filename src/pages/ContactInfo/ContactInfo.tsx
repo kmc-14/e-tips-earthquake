@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { call, mail, logoFacebook, logoTwitter } from 'ionicons/icons';
 import {
     IonContent,
     IonLabel,
@@ -15,9 +16,10 @@ import {
     IonSegment,
     IonSegmentButton
 } from '@ionic/react';
-import './ContactInfo.scss';
-import { call, mail } from 'ionicons/icons';
+
 import avatar from '../../assets/avatar/avatar 1.png';
+
+import './ContactInfo.scss';
 
 interface MyState {
     contacts: any,
@@ -73,24 +75,48 @@ class ContactInfo extends Component<{}, MyState> {
                 ],
                 agencies: [
                     {
-                        firstName: "Juan",
-                        lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
-                        emails: ["juan.dela.cruz@gmail.com"],
+                        firstName: "PHIVOLCS",
+                        lastName: "U.P. Diliman, Quezon City",
+                        numbers: ["+632 426-1468"],
+                        emails: [],
+                        fb: ["www.facebook.com/PHIVOLCS"],
+                        twitter: [],
                         type: "government"
                     },
                     {
-                        firstName: "Juan",
-                        lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
-                        emails: ["juan.dela.cruz@gmail.com"],
+                        firstName: "NDRRMC",
+                        lastName: "Camp Aguinaldo, Quezon City",
+                        numbers: ["(02) 911-5061 to 65"],
+                        emails: [],
+                        fb: ["www.facebook.com/NDRRMC"],
+                        twitter: ["@NDRRMC_OpCen"],
                         type: "government"
                     },
                     {
-                        firstName: "Juan",
-                        lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
-                        emails: ["juan.dela.cruz@gmail.com"],
+                        firstName: "Philippine Red Cross",
+                        lastName: "Victoria St, Intramuros, Manila",
+                        numbers: ["(02) 790-2300"],
+                        emails: [],
+                        fb: ["www.facebook.com/phredcross"],
+                        twitter: ["@philredcross"],
+                        type: "government"
+                    },
+                    {
+                        firstName: "Bureau of Fire Protection",
+                        lastName: "Makat Bpp Central, Ayala Ave, San Antonio, Makati",
+                        numbers: ["(02) 426-0236", "(02) 426-0219"],
+                        emails: [],
+                        fb: ["www.facebook.com/bureauoffireprotection911"],
+                        twitter: [],
+                        type: "government"
+                    },
+                    {
+                        firstName: "Philippine National Police",
+                        lastName: "Quezon City",
+                        numbers: ["117", "911", "(02) 723-0401"],
+                        emails: [],
+                        fb: ["www.facebook.com/pnp.pio1"],
+                        twitter: ["@pnppio"],
                         type: "government"
                     }
                 ],
@@ -177,7 +203,7 @@ const ContactInfoTab = (props: any) => {
                 <IonList>
                     {
                         contact.numbers.map((number: number, key: number) => (
-                            <IonItem key={key}>
+                            <IonItem key={key} className="no-padding">
                                 <IonIcon icon={call}></IonIcon>
                                 <IonLabel className="ion-padding">{number}</IonLabel>
                             </IonItem>
@@ -185,11 +211,27 @@ const ContactInfoTab = (props: any) => {
                     }
                     {
                         contact.emails.map((email: number, key: number) => (
-                            <IonItem key={key}>
+                            <IonItem key={key} className="no-padding">
                                 <IonIcon icon={mail}></IonIcon>
                                 <IonLabel className="ion-padding">{email}</IonLabel>
                             </IonItem>
                         ))
+                    }
+                    {
+                        contact.fb ? contact.fb.map((email: number, key: number) => (
+                            <IonItem key={key} className="no-padding">
+                                <IonIcon icon={logoFacebook}></IonIcon>
+                                <IonLabel className="ion-padding">{email}</IonLabel>
+                            </IonItem>
+                        )) : ""
+                    }
+                    {
+                        contact.twitter ? contact.twitter.map((email: number, key: number) => (
+                            <IonItem key={key} className="no-padding">
+                                <IonIcon icon={logoTwitter}></IonIcon>
+                                <IonLabel className="ion-padding">{email}</IonLabel>
+                            </IonItem>
+                        )) : ""
                     }
                 </IonList>
             </IonCardContent>

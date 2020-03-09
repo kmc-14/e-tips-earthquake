@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { RouteProps } from 'react-router';
+import { arrowBack } from 'ionicons/icons';
 import {
-    IonToolbar, IonButtons, IonBackButton, IonHeader, IonContent, IonFab, IonFabButton, IonIcon
+    IonContent,
+    IonFab,
+    IonFabButton,
+    IonIcon
 } from '@ionic/react';
+
 import Statics from '../../../common/Statics';
+
 import './InfoCardContent.scss';
-import { backspace, arrowBack } from 'ionicons/icons';
 
 interface MyState {
     content: any
@@ -21,15 +26,9 @@ class InfoCardContent extends Component<IRouteProps, MyState> {
 
         const parentId = this.props.match.params.id;
 
-        console.log(this.props)
         this.state = {
             content: Statics.getInformed.infoCards[parentId].content
         };
-    }
-
-    getContentBody = () => {
-
-        return ("");
     }
 
     render() {

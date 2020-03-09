@@ -15,8 +15,10 @@ import {
     IonToolbar,
     withIonLifeCycle
 } from '@ionic/react';
+
 import Statics from '../../common/Statics';
 import location from '../../assets/icon-svg/location.svg';
+
 import "./GetInformed.scss";
 
 interface MyState {

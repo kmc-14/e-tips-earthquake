@@ -1,0 +1,14 @@
+.first-aid {
+    .first-aid-img {
+        img {
+            object-fit: cover;
+            width: 100%;
+            height: 150px;
+        }
+    }
+
+    .first-aid-cards {
+        height: calc(100% - 10px);
+        margin: 5px;
+    }
+}

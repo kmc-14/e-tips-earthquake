@@ -6,12 +6,22 @@ import ContactInfo from '../pages/ContactInfo/ContactInfo';
 import GetInformed from '../pages/GetInformed/GetInformed';
 import AskQuestion from '../pages/AskQuestion/AskQuestion';
 import AboutUs from '../pages/AboutUs/AboutUs';
+import FirstAid from '../pages/FirstAid/FirstAid';
 
 import planning from '../assets/header-pics/planning.png';
 import warning from '../assets/header-pics/warning.png';
 import earthquake from '../assets/header-pics/earthquake.png';
 import earthquakeDrill from '../assets/header-pics/earthquake-drill.png';
 import duckCover from '../assets/icon-pics/duck-cover.png';
+
+import water from '../assets/header-pics/bottled-water.png';
+import food from '../assets/header-pics/canned-food.png';
+import flashlight from '../assets/header-pics/flashlight.png';
+import phone from '../assets/header-pics/phone.png';
+import whitsle from '../assets/header-pics/whistle.png';
+import tool from '../assets/header-pics/swiss.png';
+import radio from '../assets/header-pics/radio.png';
+import medicalKit from '../assets/header-pics/medkit.png';
 
 const Statics = {
     home: {
@@ -38,7 +48,7 @@ const Statics = {
             {
                 icon: medkit,
                 label: "First Aid",
-                component: <div>first aid</div>,
+                component: <FirstAid />,
                 hasOwnHeader: false
             },
             {
@@ -214,6 +224,50 @@ const Statics = {
     },
     askQuestion: {
         userId: "user_13cdCjPf4oIqwHMA6Utul"
+    },
+    firstAid: {
+        mustHaves: [
+            {
+                label: "Water",
+                description: "One-three gallons per person a day, enough for 3-5 days",
+                img: water
+            },
+            {
+                label: "Flashlight",
+                description: "Don't forget to pack in extra batteries",
+                img: flashlight
+            },
+            {
+                label: "Mobile Phone",
+                description: "Preferrably with removable battery, which can be placed only when needed to save battery life",
+                img: phone
+            },
+            {
+                label: "Food",
+                description: "Non-perishable food (e.g canned goods), enough for 3-5 days",
+                img: food
+            },
+            {
+                label: "Whistle",
+                description: "Signal for help",
+                img: whitsle
+            },
+            {
+                label: "Multi-purpose Pocket Tool",
+                description: "Different tools such as small knife, can opener, scissors and more",
+                img: tool
+            },
+            {
+                label: "Radio",
+                description: "For up-to-date news and information. Keep extra batteries",
+                img: radio
+            },
+            {
+                label: "Medical Kit",
+                description: "Must include bandages, band-aids, antiseptic wipes, thermometer, safety pins, tapes, gloves, etc.",
+                img: medicalKit
+            }
+        ]
     }
 }
 

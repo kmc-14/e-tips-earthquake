@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { RouteProps } from 'react-router';
+import { toInt } from '../../common/helpers/numberHelper';
 import {
     IonIcon,
     IonLabel,
@@ -13,9 +15,10 @@ import {
     IonMenuButton,
     IonMenuToggle
 } from '@ionic/react';
-import Statics from '../../common/Statics';
+
 import './Home.scss'
-import { RouteProps } from 'react-router';
+
+import Statics from '../../common/Statics';
 
 interface IRouteProps extends RouteProps {
     match: any
@@ -55,10 +58,7 @@ class Home extends Component<IRouteProps, MyState> {
                             {Statics.home.menuItems.map((item, index) => (
                                 <IonMenuToggle key={index} >
                                     <IonItem routerLink={`/home/${index}`}
-                                        className={`${index == this.state.selectedContentIndex ? "selected" : ""}`}
-                                        style={{
-                                            "--background": index == this.state.selectedContentIndex ? "rgba(230, 230, 230, 0.5)" : ""
-                                        }}
+                                        className={`${toInt(index) === toInt(this.state.selectedContentIndex) ? "selected" : ""}`}
                                     >
                                         <IonIcon icon={item.icon}></IonIcon>
                                         <IonLabel className="ion-padding">{item.label}</IonLabel>

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import {
-    IonContent, IonGrid, IonRow, IonCol, IonIcon
-} from '@ionic/react';
-import Statics from '../../common/Statics';
 import { RouteProps } from 'react-router';
-import './AboutUs.scss';
+import {
+    IonContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonIcon
+} from '@ionic/react';
+
 import glassesOutline from '../../assets/icon-svg/glasses-outline.svg';
 import bulbOutline from '../../assets/icon-svg/bulb-outline.svg';
+
+import './AboutUs.scss';
 
 interface IRouteProps extends RouteProps {
     match: any

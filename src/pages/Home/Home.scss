@@ -2,4 +2,10 @@
     .menu-content-open {
         pointer-events: unset !important;
     }
+
+    ion-item {
+        &.selected {
+            --background: rgba(230, 230, 230, 0.5);
+        }
+    }
 }
