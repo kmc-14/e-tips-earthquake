@@ -115,12 +115,24 @@ class AskQuestion extends Component<IRouteProps, MyState> {
             <div className="ask-question">
                 <IonContent scrollEvents={true} className="content">
                     <IonItem class="margin-20-0 medium-font">
+                        <IonLabel position="floating">To:</IonLabel>
+                        <IonInput
+                            type="text"
+                            size={20}
+                            value={"phivolcs_mail@phivolcs.dost.gov.ph"}
+                            readonly
+                            color="primary"
+                        />
+                    </IonItem>
+
+                    <IonItem class="margin-20-0 medium-font">
                         <IonLabel position="floating">From:</IonLabel>
                         <IonInput
                             type="text"
                             size={20}
                             onIonChange={(event) => this.handleFieldChange("from", event)}
                             value={this.state.from}
+                            placeholder="Enter your email here"
                         />
                     </IonItem>
 
@@ -131,6 +143,7 @@ class AskQuestion extends Component<IRouteProps, MyState> {
                             size={20}
                             onIonChange={(event) => this.handleFieldChange("subject", event)}
                             value={this.state.subject}
+                            placeholder="Enter subject here"
                         />
                     </IonItem>
 

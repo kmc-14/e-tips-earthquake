@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { call, mail, logoFacebook, logoTwitter } from 'ionicons/icons';
+import React, { Component, useState } from 'react';
+import { call, mail, logoFacebook, logoTwitter, add, arrowBack, save } from 'ionicons/icons';
 import {
     IonContent,
     IonLabel,
@@ -14,8 +14,18 @@ import {
     IonItem,
     IonToolbar,
     IonSegment,
-    IonSegmentButton
+    IonSegmentButton,
+    IonFab,
+    IonFabButton,
+    IonModal,
+    IonHeader,
+    IonButtons,
+    IonTitle,
+    IonButton,
+    IonInput,
+    IonListHeader
 } from '@ionic/react';
+
 
 import avatar from '../../assets/avatar/avatar 1.png';
 
@@ -23,7 +33,8 @@ import './ContactInfo.scss';
 
 interface MyState {
     contacts: any,
-    selectedSegment: any
+    selectedSegment: any,
+    showAddContactModal: boolean
 };
 
 class ContactInfo extends Component<{}, MyState> {
@@ -130,7 +141,8 @@ class ContactInfo extends Component<{}, MyState> {
                     }
                 ]
             },
-            selectedSegment: this.CONTACT_TYPES[0]
+            selectedSegment: this.CONTACT_TYPES[0],
+            showAddContactModal: false
         };
     }
 
@@ -160,8 +172,23 @@ class ContactInfo extends Component<{}, MyState> {
         }
     }
 
+    handleAddContact = () => {
+        this.setState({ showAddContactModal: true })
+    }
+
+    handleSaveContact = (field: any) => {
+        let contacts = Object.assign({}, this.state.contacts, {
+            relatives: [...this.state.contacts.relatives, field]
+        });
+
+        this.setState({
+            contacts: contacts,
+            showAddContactModal: false
+        })
+    }
+
     render() {
-        const { selectedSegment } = this.state;
+        const { selectedSegment, showAddContactModal } = this.state;
         return (
             <div className="contanct-info">
                 <IonToolbar>
@@ -169,7 +196,7 @@ class ContactInfo extends Component<{}, MyState> {
                         {
                             this.getContactTypes().map((type, key) => (
                                 <IonSegmentButton key={key} value={type} checked={selectedSegment === type}>
-                                    <IonLabel>{type}</IonLabel>
+                                    <IonLabel>{type === "relatives" ? "Contact Persons" : type}</IonLabel>
                                 </IonSegmentButton>
                             ))
                         }
@@ -178,13 +205,34 @@ class ContactInfo extends Component<{}, MyState> {
 
                 <IonContent id="contanct-info-ion-content" scrollEvents={true} className="content with-segment">
                     {this.getSegmentContent()}
+
+                    {
+                        selectedSegment === this.CONTACT_TYPES[0] &&
+                        <IonFab vertical="bottom" horizontal="end" slot="fixed">
+                            <IonFabButton onClick={this.handleAddContact}>
+                                <IonIcon icon={add} />
+                            </IonFabButton>
+                        </IonFab>
+                    }
                 </IonContent>
+
+                <IonModal
+                    isOpen={showAddContactModal}
+                    cssClass='add-contact-modal'
+                >
+                    <AddContactModalContent
+                        onClose={() => this.setState({ showAddContactModal: false })}
+                        onSave={(field: any) => { this.handleSaveContact(field) }}
+                    />
+                </IonModal>
             </div>
         )
     }
 }
 
 export default ContactInfo;
+
+//#region ContactInfoTab
 
 const ContactInfoTab = (props: any) => {
     const { contacts, type } = props;
@@ -238,3 +286,142 @@ const ContactInfoTab = (props: any) => {
         </IonCard>
     ))
 }
+
+//#endregion
+
+//#region 
+
+const AddContactModalContent = (props: any) => {
+    const [field, setField]: any = useState({
+        firstName: "",
+        lastName: "",
+        numbers: [],
+        emails: [],
+        type: "relative"
+    })
+
+    const handleFieldChange = (fieldName: string, value: any) => {
+        setField({ ...field, [fieldName]: value })
+    }
+
+    const handleAddArrayField = (fieldName: string) => {
+        let fieldItems: string[] = [...field[fieldName]]
+
+        if (!fieldItems.length || fieldItems[fieldItems.length - 1]) {
+            fieldItems.push("")
+            handleFieldChange(fieldName, fieldItems)
+        }
+    }
+
+    const handleArrayFieldChange = (fieldName: string, value: string, index: number) => {
+        let fieldItems: string[] = Object.assign(field[fieldName], {
+            [index]: value
+        })
+
+        handleFieldChange(fieldName, fieldItems)
+    }
+
+    const handleSave = () => {
+        if (isValid()) {
+            props.onSave(field)
+        }
+    }
+
+    const isValid = () => {
+        return field.firstName && field.lastName && field.numbers.length && field.numbers[field.numbers.length - 1]
+    }
+
+    return (
+        <div className="add-contact-modal-content">
+            <IonHeader>
+                <IonToolbar>
+                    <IonButtons slot="start" >
+                        <IonButton onClick={props.onClose} >
+                            <IonIcon slot="icon-only" icon={arrowBack} />
+                        </IonButton>
+                    </IonButtons>
+                    <IonTitle>Add Contact</IonTitle>
+                </IonToolbar>
+            </IonHeader>
+
+            <IonContent>
+                <IonItem class="margin-20-0 medium-font">
+                    <IonLabel position="floating">Last Name</IonLabel>
+                    <IonInput
+                        type="text"
+                        size={255}
+                        onIonChange={(event: any) => handleFieldChange("lastName", event.target.value)}
+                        value={field.lastName}
+                    />
+                </IonItem>
+
+                <IonItem class="margin-20-0 medium-font">
+                    <IonLabel position="floating">First Name</IonLabel>
+                    <IonInput
+                        type="text"
+                        size={255}
+                        onIonChange={(event: any) => handleFieldChange("firstName", event.target.value)}
+                        value={field.firstName}
+                    />
+                </IonItem>
+
+                <IonListHeader>
+                    <IonLabel>Phone Numbers</IonLabel>
+                </IonListHeader>
+                {
+                    field.numbers.map((number: string, index: number) => (
+                        <IonItem class="medium-font" style={{ marginBottom: '10px' }}>
+                            <IonInput
+                                type="text"
+                                size={13}
+                                onIonChange={(event: any) =>
+                                    handleArrayFieldChange("numbers", event.target.value, index)
+                                }
+                                value={number}
+                                placeholder="Input phone number here"
+                            />
+                        </IonItem>
+                    ))
+
+                }
+                <IonButton onClick={() => handleAddArrayField("numbers")} size="small" shape="round">
+                    Add number
+                    <IonIcon slot="icon-only" icon={add} />
+                </IonButton>
+
+                <IonListHeader>
+                    <IonLabel>Emails</IonLabel>
+                </IonListHeader>
+                {
+                    field.emails.map((email: string, index: number) => (
+                        <IonItem class="medium-font" style={{ marginBottom: '10px' }}>
+                            <IonInput
+                                type="email"
+                                size={255}
+                                onIonChange={(event: any) => handleArrayFieldChange("emails", event.target.value, index)}
+                                value={email}
+                                placeholder="Input email here"
+                            />
+                        </IonItem>
+                    ))
+
+                }
+                <IonButton onClick={() => handleAddArrayField("emails")} size="small" shape="round">
+                    Add email
+                    <IonIcon slot="icon-only" icon={add} />
+                </IonButton>
+
+                <IonButton
+                    onClick={() => handleSave()}
+                    style={{ float: 'right', margin: '50px 10px 10px 10px' }}
+                    disabled={!isValid()}
+                >
+                    Save
+                    <IonIcon slot="end" icon={save} />
+                </IonButton>
+            </IonContent>
+        </div>
+
+    )
+}
+//#endregion

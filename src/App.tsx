@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { IonApp } from '@ionic/react';
 import Home from './pages/Home/Home';
+import Landing from './pages/Home/Landing'
 import InfoCardContent from './pages/GetInformed/InfoCardContent/InfoCardContent';
 
 /* Core CSS required for Ionic components to work properly */
@@ -31,13 +32,14 @@ class App extends Component {
       <IonApp className="app">
         <Router>
           <Route exact path="/">
-            <Redirect to="/home/0" />
+            <Redirect to="/home" />
           </Route>
 
           <Route exact path="/home/*/*">
             <Redirect to="/home/0" />
           </Route>
 
+          <Route exact path="/home" component={Landing} />
           <Route exact path="/home/:contentIndex" component={Home} />
           <Route exact path="/info-card/:id" component={InfoCardContent} />
         </Router>
