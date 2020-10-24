@@ -57,7 +57,7 @@ class Home extends Component<IRouteProps, MyState> {
                         <IonList>
                             {Statics.home.menuItems.map((item, index) => (
                                 <IonMenuToggle key={index} >
-                                    <IonItem routerLink={`/home/${index}`}
+                                    <IonItem routerLink={item.redirect}
                                         className={`${toInt(index) === toInt(this.state.selectedContentIndex) ? "selected" : ""}`}
                                     >
                                         <IonIcon icon={item.icon}></IonIcon>

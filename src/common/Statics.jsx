@@ -28,34 +28,46 @@ const Statics = {
         menuId: "app-menu",
         menuItems: [
             {
-                icon: call,
-                label: "Contact Info",
-                component: <ContactInfo />,
-                hasOwnHeader: false
+                icon: home,
+                label: "Home",
+                component: null,
+                hasOwnHeader: true,
+                redirect: "/"
             },
             {
                 icon: notifications,
                 label: "Get Informed",
                 component: <GetInformed />,
-                hasOwnHeader: false
+                hasOwnHeader: false,
+                redirect: "/home/1"
+            },
+            {
+                icon: call,
+                label: "Contact Info",
+                component: <ContactInfo />,
+                hasOwnHeader: false,
+                redirect: "/home/2"
             },
             {
                 icon: help,
                 label: "Ask a Question",
                 component: <AskQuestion />,
-                hasOwnHeader: false
+                hasOwnHeader: false,
+                redirect: "/home/3"
             },
             {
                 icon: medkit,
                 label: "First Aid",
                 component: <FirstAid />,
-                hasOwnHeader: false
+                hasOwnHeader: false,
+                redirect: "/home/4"
             },
             {
                 icon: people,
                 label: "About Us",
                 component: <AboutUs />,
-                hasOwnHeader: false
+                hasOwnHeader: false,
+                redirect: "/home/5"
             }
         ]
     },

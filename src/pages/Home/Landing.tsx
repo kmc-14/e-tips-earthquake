@@ -10,6 +10,7 @@ import arrowForwardCircleOutline from '../../assets/icon-svg/arrow-forward-circl
 import LandingLogo from '../../assets/icon-svg/LandingLogo.svg'
 
 import './Landing.scss'
+import Statics from '../../common/Statics';
 
 interface IRouteProps extends RouteProps {
     match: any
@@ -33,7 +34,7 @@ class Landing extends Component<IRouteProps & RouteComponentProps, MyState> {
     }
 
     handleProceed = () => {
-        this.props.history.push("/home/0")
+        this.props.history.push(Statics.home.menuItems[1].redirect)
     }
 
     render() {
@@ -41,7 +42,7 @@ class Landing extends Component<IRouteProps & RouteComponentProps, MyState> {
             <div className="landing">
                 <IonIcon className="landing-logo" icon={LandingLogo} />
 
-                <div className="landing-title">e-tips: Earthquake</div>
+                <div className="landing-title xx-large-font">E-TIPS: EARTHQUAKE</div>
                 <IonIcon className="xx-large-font proceed-btn" icon={arrowDownCircleOutline}
                     onClick={this.handleShowMore}
                 />
