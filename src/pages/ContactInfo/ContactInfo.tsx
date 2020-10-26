@@ -28,6 +28,7 @@ import {
 
 
 import avatar from '../../assets/avatar/avatar 1.png';
+import hospital from '../../assets/icon-pics/hospital.png';
 
 import './ContactInfo.scss';
 
@@ -138,6 +139,48 @@ class ContactInfo extends Component<{}, MyState> {
                         numbers: ["+63 9156705473", "02 1922 230"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "hospital"
+                    },
+                    {
+                        firstName: "Philippine General Hospital",
+                        lastName: "Taft Ave, Ermita",
+                        numbers: ["(02) 8554 8400"],
+                        emails: [],
+                        type: "hospital"
+                    },
+                    {
+                        firstName: "Manila Doctor's Hospital",
+                        lastName: "UN Ave, Ermita",
+                        numbers: ["(02) 8558 0888"],
+                        emails: [],
+                        type: "hospital"
+                    },
+                    {
+                        firstName: "Caloocan City Medical Center",
+                        lastName: "450 A Mabini St., Poblacion",
+                        numbers: ["(02) 8288 7077"],
+                        emails: [],
+                        type: "hospital"
+                    },
+                    {
+                        firstName: "Valenzuela City Gen Hospital",
+                        lastName: "Padrigal St, Valenzuela",
+                        numbers: ["(02) 8294 6711"],
+                        emails: [],
+                        type: "hospital"
+                    },
+                    {
+                        firstName: "Navotas City Hospital",
+                        lastName: "M. Naval St, Navotas",
+                        numbers: ["(02) 8374 0135"],
+                        emails: [],
+                        type: "hospital"
+                    },
+                    {
+                        firstName: "Malabon City Hospital",
+                        lastName: "Longos, Malabon",
+                        numbers: ["(02) 8285 2898"],
+                        emails: [],
+                        type: "hospital"
                     }
                 ]
             },
@@ -243,7 +286,7 @@ const ContactInfoTab = (props: any) => {
                 <IonCardSubtitle>{contact.lastName}</IonCardSubtitle>
                 <IonCardTitle>{contact.firstName}</IonCardTitle>
                 <IonAvatar className="contact-avatar">
-                    <img src={avatar} alt="" />
+                    <img src={type === "hospitals" ? hospital : avatar} alt="" />
                 </IonAvatar>
             </IonCardHeader>
 
