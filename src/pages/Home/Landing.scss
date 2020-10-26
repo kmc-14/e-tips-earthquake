@@ -30,6 +30,7 @@
         background: white;
         transform: translateY(100%);
         transition: all linear 0.5s;
+        overflow: auto;
 
         &.fade-in {
             transform: translateY(0);

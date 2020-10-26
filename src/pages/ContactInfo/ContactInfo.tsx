@@ -52,35 +52,35 @@ class ContactInfo extends Component<{}, MyState> {
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
+                        numbers: ["+63 9156705777"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "relative"
                     },
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
+                        numbers: ["+63 9156705777"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "relative"
                     },
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
+                        numbers: ["+63 9156705777"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "relative"
                     },
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
+                        numbers: ["+63 9156705777"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "relative"
                     },
                     {
                         firstName: "Juan",
                         lastName: "Dela Cruz",
-                        numbers: ["+63 9156705473"],
+                        numbers: ["+63 9156705777"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "relative"
                     }
@@ -136,7 +136,7 @@ class ContactInfo extends Component<{}, MyState> {
                     {
                         firstName: "San Lazaro Hospital",
                         lastName: "Tayuman",
-                        numbers: ["+63 9156705473", "02 1922 230"],
+                        numbers: ["+63 9156705777", "02 1922 230"],
                         emails: ["juan.dela.cruz@gmail.com"],
                         type: "hospital"
                     },
